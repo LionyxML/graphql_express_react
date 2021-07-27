@@ -9,14 +9,16 @@ function GetUsers() {
   const [users, setUsers] = useState([]);
 
   const [update, setUpdate] = useState(false);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     if (data) {
       setUsers(data.getAllUsers);
+      setTotal(data.getAllUsers.length);
     }
 
-    setUpdate(false);
-  }, [data, update, setUpdate]);
+    console.log("updated");
+  }, [data, update, setUsers, setTotal]);
 
   return (
     <div>
@@ -27,6 +29,7 @@ function GetUsers() {
         .map((val) => {
           return <li key={val.id}>{val.firstName}</li>;
         })}
+      <p>Total: {total}</p>
     </div>
   );
 }

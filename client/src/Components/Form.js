@@ -11,7 +11,7 @@ function Form(props) {
   const [createUser, { error }] = useMutation(CREATE_USER_MUTATION);
 
   const addUser = () => {
-    props.setUpdate(true);
+    props.setUpdate((state) => !state);
 
     createUser({
       variables: {
